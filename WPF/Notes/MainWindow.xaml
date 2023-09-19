@@ -24,17 +24,25 @@
                  DisplayMemberPath="Title"
                  SelectedItem="{Binding SelectedNote}"
                  HorizontalAlignment="Stretch"
-                 Margin="0 0 20 0"/>
+                 Margin="0 0 20 0" />
         <StackPanel Grid.Column="1">
-            <TextBlock FontWeight="Bold" FontSize="15">Selected note</TextBlock>
-            <StackPanel Orientation="Horizontal">
+            <TextBlock FontWeight="Bold"
+                       FontSize="15">Selected note</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Title: " />
-                <TextBlock Text="{Binding SelectedNote.Title}" />
+                <TextBox Text="{Binding SelectedNote.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Width="200"
+                         Height="100">
+                </TextBox>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Content: " />
-                <TextBlock Text="{Binding SelectedNote.Content}" />
+
+                <TextBox Text="{Binding SelectedNote.Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Width="200"
+                         Height="100">
+                </TextBox>
             </StackPanel>
 
         </StackPanel>
