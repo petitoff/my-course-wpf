@@ -60,12 +60,6 @@ namespace Notes.ViewModels
             {
                 _selectedNote = value;
                 OnPropertyChanged(nameof(SelectedNote));
-
-                if (_selectedNote != null)
-                {
-                    Title = _selectedNote.Title;
-                    Content = _selectedNote.Content;
-                }
             }
         }
 
