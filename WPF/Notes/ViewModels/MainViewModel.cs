@@ -74,6 +74,11 @@ namespace Notes.ViewModels
 
         private void AddNote(Note note)
         {
+            if (string.IsNullOrWhiteSpace(Title) || string.IsNullOrWhiteSpace(Content))
+            {
+                return;
+            }
+
             Notes.Add(new Note()
             {
                 Title = Title,
