@@ -1,0 +1,78 @@
+﻿<Window x:Class="Zadanie3.View.Gracz2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zadanie3.View"
+        mc:Ignorable="d"
+        Title="Gracz2" Height="450" Width="1000">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="10" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="70" />
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="Margin" Value="1" />
+                    <Setter Property="Background" Value="White" />
+                </Style>
+            </StackPanel.Resources>
+
+            <TextBlock Text="Opcje" TextAlignment="Center" />
+            <Button Content="Gotowy" Command="{Binding SubmitReadyPlayer2Command}" />
+            <Button Content="Reset"
+                    Command="{Binding RestartGameCommand}" />
+
+            <TextBlock Margin="0 10 0 0"
+                       Text="{Binding PlayerTurn, Converter={StaticResource PlayerTurnConverter}}" />
+            <TextBlock Margin="0 10 0 0"
+                       Text="{Binding IsPlayer2Ready, Converter={StaticResource IsPlayerReadyTextConverter}}"
+                       Foreground="Black" />
+
+            <TextBlock Margin="0 10 0 0"
+                       Text="{Binding PlayerWin, Converter={StaticResource PlayerWinConverter}}" />
+        </StackPanel>
+
+        <Grid Grid.Column="2" VerticalAlignment="Center">
+            <ItemsControl ItemsSource="{Binding PolaGracza2}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Background="{Binding StateOfField,Converter={StaticResource StateOfFieldConverter}}"
+                                Width="30" Height="30" Margin="1"
+                                Command="{Binding DataContext.AddShipCommand,RelativeSource={RelativeSource AncestorType=Window}}"
+                                CommandParameter="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </Grid>
+        <Grid Grid.Column="3" VerticalAlignment="Center">
+            <ItemsControl ItemsSource="{Binding DoStrzelania1}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Width="30" Height="30" Margin="1"
+                                Command="{Binding DataContext.ShootShipCommand,RelativeSource={RelativeSource AncestorType=Window}}"
+                                CommandParameter="{Binding}"
+                                Background="{Binding StateOfField, Converter={StaticResource IShootButtonConverter}}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </Grid>
+    </Grid>
+</Window>
