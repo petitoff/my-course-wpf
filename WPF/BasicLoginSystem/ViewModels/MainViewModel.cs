@@ -6,24 +6,24 @@ namespace BasicLoginSystem.ViewModels;
 
 public class MainViewModel : INotifyPropertyChanged
 {
-    private readonly UserSessionService userSessionService;
-    private object currentViewModel;
+    private readonly UserSessionService _userSessionService;
+    private object _currentViewModel;
 
     public MainViewModel(UserSessionService userSessionService)
     {
         // Domyślnie pokazujemy LoginViewModel
-        this.userSessionService = userSessionService;
+        this._userSessionService = userSessionService;
         CurrentViewModel = new LoginViewModel(ZalogujUzytkownika, userSessionService);
     }
 
-    public string UserName => userSessionService.UserName;
+    public string UserName => _userSessionService.UserName;
 
     public object CurrentViewModel
     {
-        get => currentViewModel;
+        get => _currentViewModel;
         set
         {
-            currentViewModel = value;
+            _currentViewModel = value;
             OnPropertyChanged();
         }
     }
