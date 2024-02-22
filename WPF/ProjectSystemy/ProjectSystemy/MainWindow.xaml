@@ -1,0 +1,54 @@
+﻿<Window x:Class="ProjectSystemy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectSystemy"
+        Loaded="Window_Loaded"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800">
+
+    <Grid Background="green">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Train tracks -->
+        <Rectangle Grid.ColumnSpan="3" Grid.Row="1" Fill="Black" Height="50" VerticalAlignment="Center" />
+
+        <!-- Vertical road -->
+        <Rectangle Grid.Column="1" Grid.RowSpan="3" Fill="Black" Width="50" HorizontalAlignment="Center" />
+
+        <!-- Buttons -->
+        <StackPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <Button Content="Start" Click="Button_Click" Margin="5" />
+            <Button Content="Stop" Click="StopButton_Click" Margin="5" />
+            <Button Content="Run Train" Click="RunTrainButton_Click" Margin="5" />
+        </StackPanel>
+
+        <!-- Animation area -->
+        <Canvas Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" x:Name="MainCanvas">
+            <!-- Car -->
+            <Rectangle x:Name="carRectangle" Fill="Red" Height="50" Width="50" Stroke="White" StrokeThickness="2">
+                <Rectangle.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+
+            <!-- Train -->
+            <Rectangle x:Name="trainRectangle" Fill="Blue" Height="50" Width="100" Stroke="White" StrokeThickness="2" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TranslateTransform X="0" Y="206"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Canvas>
+    </Grid>
+</Window>

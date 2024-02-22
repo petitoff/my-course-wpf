@@ -1,11 +1,16 @@
 ﻿using WhereOperation;
 
+List<Person> people = GetPeople();
+var adults = people
+    .Where(p => p.Age > 1)
+    .OrderBy(p => p.Age * -1)
+    .ToList();
 
-var people = GetPeople();
-var adults = people.Where(p => p.Age > 18).ToList();
+adults.ForEach(p =>
+{
+    Console.WriteLine(new { name = p.Name, age = p.Age });
 
-adults.ForEach(p => Console.WriteLine(new { name = p.Name, age = p.Age }));
-
+});
 
 Console.ReadKey();
 return;
